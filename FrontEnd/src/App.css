@@ -1,46 +1,56 @@
 /* Global Styles */
 :root {
-  --primary-color: #5271ff;
-  --primary-dark: #3251e0;
-  --primary-light: #e4e9ff;
-  --primary-rgb: 82, 113, 255;
-  --secondary-color: #ff7eac;
-  --dark-color: #2a2d43;
-  --light-color: #f8f9fa;
-  --success-color: #28a745;
-  --danger-color: #dc3545;
-  --warning-color: #ffc107;
-  --info-color: #17a2b8;
-  --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --border-radius: 8px;
-  --transition: all 0.3s ease;
-  --body-bg: #f5f7fb;
+  --primary-color: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-light: #e0e7ff;
+  --primary-rgb: 99, 102, 241;
+  --secondary-color: #ec4899;
+  --dark-color: #1e293b;
+  --light-color: #f8fafc;
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+  --box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  --box-shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+  --border-radius: 16px;
+  --border-radius-sm: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --body-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --body-bg-solid: #f1f5f9;
   --card-bg: #ffffff;
-  --text-color: #2a2d43;
-  --muted-color: #6c757d;
-  --border-color: #f0f0f0;
+  --text-color: #0f172a;
+  --muted-color: #64748b;
+  --border-color: #e2e8f0;
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
 }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: var(--text-color);
-  background-color: var(--body-bg);
-  line-height: 1.6;
+  background: var(--body-bg-solid);
+  background-attachment: fixed;
+  line-height: 1.7;
   transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 [data-theme="dark"], body.dark-mode {
-  --primary-light: #3251e0;
-  --dark-color: #f8f9fa;
-  --light-color: #2a2d43;
-  --body-bg: #1a1d2e;
-  --card-bg: #2a2d43;
-  --text-color: #e4e6eb;
-  --muted-color: #b0b3b8;
-  --border-color: #3e4154;
-  --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  --dark-bg-secondary: #252839;
-  --dark-card-bg: #2a2d43;
+  --primary-light: #4f46e5;
+  --dark-color: #f1f5f9;
+  --light-color: #1e293b;
+  --body-bg: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  --body-bg-solid: #0f172a;
+  --card-bg: #1e293b;
+  --text-color: #f1f5f9;
+  --muted-color: #94a3b8;
+  --border-color: #334155;
+  --box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  --box-shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
+  --dark-bg-secondary: #1e293b;
+  --dark-card-bg: #1e293b;
 }
 
 .container {
@@ -57,11 +67,13 @@ body {
   overflow: hidden;
   background-color: var(--card-bg);
   color: var(--text-color);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--box-shadow-lg);
 }
 
 body.dark-mode .card {
@@ -95,20 +107,26 @@ body.dark-mode .card:hover {
 
 /* Button Styling */
 .btn {
-  border-radius: 6px;
-  padding: 0.5rem 1.25rem;
-  font-weight: 500;
+  border-radius: var(--border-radius-sm);
+  padding: 0.625rem 1.5rem;
+  font-weight: 600;
   transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
 }
 
 .btn-primary {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
+  background: var(--gradient-primary);
+  border: none;
+  color: white;
+  box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.3);
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-dark);
-  border-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.4);
+  background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
 }
 
 .btn-outline-primary {
@@ -138,18 +156,22 @@ body.dark-mode .btn-outline-primary:hover {
 
 /* Form Styling */
 .form-control {
-  padding: 0.75rem 1rem;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
+  padding: 0.875rem 1.25rem;
+  border-radius: var(--border-radius-sm);
+  border: 2px solid var(--border-color);
   background-color: var(--card-bg);
   color: var(--text-color);
+  transition: var(--transition);
+  font-size: 0.95rem;
 }
 
 .form-control:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 0.2rem rgba(var(--primary-rgb), 0.25);
+  box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.1), 0 4px 12px rgba(var(--primary-rgb), 0.15);
   background-color: var(--card-bg);
   color: var(--text-color);
+  outline: none;
+  transform: translateY(-1px);
 }
 
 body.dark-mode .form-control {
@@ -223,6 +245,33 @@ body.dark-mode ::-webkit-scrollbar-thumb:hover {
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
 /* Utility Classes */
 .animate-fadeIn {
   animation: fadeIn 0.5s ease-in-out;
@@ -248,4 +297,38 @@ body.dark-mode ::-webkit-scrollbar-thumb:hover {
 
 .icon-btn:hover {
   background-color: rgba(var(--primary-rgb), 0.1);
+  transform: scale(1.1);
+}
+
+/* Glassmorphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Enhanced shadows */
+.shadow-sm {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-md {
+  box-shadow: var(--box-shadow);
+}
+
+.shadow-lg {
+  box-shadow: var(--box-shadow-lg);
+}
+
+/* Smooth transitions for all interactive elements */
+a, button, input, select, textarea {
+  transition: var(--transition);
 }

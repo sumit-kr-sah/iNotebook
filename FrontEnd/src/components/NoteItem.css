@@ -5,11 +5,13 @@
 }
 
 .note-card {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   position: relative;
   height: 100%;
   display: flex;
@@ -17,8 +19,9 @@
 }
 
 .note-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--box-shadow-lg);
+  border-color: rgba(var(--primary-rgb), 0.3);
 }
 
 .note-tag-badge {
@@ -45,9 +48,9 @@
 }
 
 .note-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #333;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-color);
   margin-bottom: 1rem;
   padding-right: 40px; /* Make room for the tag badge */
   overflow: hidden;
@@ -55,6 +58,7 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  line-height: 1.4;
 }
 
 .note-description {
@@ -140,6 +144,24 @@
 
 .note-card {
   animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Dark mode styles */
+body.dark-mode .note-card {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .note-card:hover {
+  border-color: rgba(var(--primary-rgb), 0.4);
+}
+
+body.dark-mode .note-title {
+  color: var(--text-color);
+}
+
+body.dark-mode .note-description {
+  color: var(--muted-color);
 }
 
 /* Responsive */

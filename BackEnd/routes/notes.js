@@ -49,8 +49,8 @@ router.post(
       //print it on thnderclinte response
       res.json(savednote);
     } catch (error) {
-      console.error(error.message);
-      res.status(500).send("Some Code error in Route 2 of notes.js");
+      console.error("Error adding note:", error.message);
+      res.status(500).json({ error: "Some Code error in Route 2 of notes.js", details: error.message });
     }
   }
 );

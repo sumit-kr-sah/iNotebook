@@ -1,15 +1,25 @@
 .navbar-custom {
-  background-color: var(--card-bg);
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-  padding: 15px 0;
-  transition: background-color 0.3s ease;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+  padding: 18px 0;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .navbar-brand {
-  font-weight: 700;
-  font-size: 1.4rem;
-  color: var(--primary-color);
+  font-weight: 800;
+  font-size: 1.6rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   letter-spacing: -0.5px;
+  transition: var(--transition);
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
 }
 
 .navbar-brand i {
@@ -17,16 +27,20 @@
 }
 
 .nav-link {
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-color);
   position: relative;
   margin-right: 20px;
-  padding: 0.5rem 0;
+  padding: 0.5rem 1rem;
   font-size: 0.95rem;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition);
 }
 
 .nav-link:hover {
   color: var(--primary-color);
+  background: rgba(var(--primary-rgb), 0.1);
+  transform: translateY(-2px);
 }
 
 .nav-link.active {
@@ -227,4 +241,16 @@
     margin: 10px 0;
     justify-content: flex-end;
   }
+}
+
+/* Dark mode styles */
+body.dark-mode .navbar-custom {
+  background: rgba(30, 41, 59, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .add-note-card,
+body.dark-mode .note-card {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: rgba(255, 255, 255, 0.1);
 } 
